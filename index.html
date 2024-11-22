@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cinematic Mood Movies</title>
+    <link rel="preconnect" href="https://api.themoviedb.org">
+    <link rel="preconnect" href="https://image.tmdb.org">
+    <link rel="dns-prefetch" href="https://api.themoviedb.org">
+    <link rel="dns-prefetch" href="https://image.tmdb.org">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+</head>
+<body>
+    <button id="logoutBtn" class="glass-select">
+        <i class="fas fa-sign-out-alt"></i> Logout
+    </button>
+
+    <div class="container">
+        <h1>Discover Your Movie Mood</h1>
+        
+        <div class="mood-selector">
+            <select id="primaryMoodSelect" class="glass-select">
+                <option value="">Select primary mood...</option>
+            </select>
+            
+            <select id="subMoodSelect" class="glass-select" disabled>
+                <option value="">Select specific mood...</option>
+            </select>
+
+            <select id="formatSelect" class="glass-select">
+                <option value="">Any Format</option>
+                <option value="animation">Animation</option>
+                <option value="live-action">Live Action</option>
+            </select>
+
+            <div class="year-filter glass-select">
+                <label for="yearStart">From:</label>
+                <input type="number" id="yearStart" min="1970" max="2024" placeholder="">
+                <label for="yearEnd">To:</label>
+                <input type="number" id="yearEnd" min="1970" max="2024" placeholder="">
+            </div>
+        </div>
+
+        <div id="movieCard" class="movie-card hidden">
+            <div class="loading-spinner hidden"></div>
+            <img id="moviePoster" src="" alt="Movie Poster" loading="lazy" decoding="async">
+            <div class="movie-info">
+                <h2 id="movieTitle"></h2>
+                <div class="movie-meta">
+                    <div class="meta-item">
+                        <i class="fas fa-calendar"></i>
+                        <span id="movieYear"></span>
+                    </div>
+                    <div class="meta-item">
+                        <i class="fas fa-star"></i>
+                        <span id="movieRating"></span>
+                    </div>
+                    <div class="meta-item">
+                        <i class="fas fa-clock"></i>
+                        <span id="movieDuration"></span>
+                    </div>
+                </div>
+                <div class="movie-genres">
+                    <span id="movieGenres" class="genre-tag"></span>
+                </div>
+                <p id="movieOverview" class="movie-overview"></p>
+            </div>
+        </div>
+    </div>
+    <script type="module" src="src/authCheck.js"></script>
+    <script type="module" src="src/main.js"></script>
+</body>
+</html>
