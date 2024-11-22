@@ -90,9 +90,6 @@ document.addEventListener('DOMContentLoaded', () => {
             
             // Sign in user
             const userCredential = await signInWithEmailAndPassword(auth, email, password);
-            
-            // Redirect to main page on success
-            window.location.href = 'index.html';
         } catch (error) {
             loginError.textContent = getErrorMessage(error.code);
         }
@@ -116,9 +113,6 @@ document.addEventListener('DOMContentLoaded', () => {
             await userCredential.user.updateProfile({
                 displayName: name
             });
-            
-            // Redirect to main page on success
-            window.location.href = 'index.html';
         } catch (error) {
             signupError.textContent = getErrorMessage(error.code);
         }
@@ -173,9 +167,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Check authentication state
     auth.onAuthStateChanged((user) => {
-        if (user && window.location.pathname.includes('auth.html')) {
-            // If user is signed in and on auth page, redirect to main page
-            window.location.href = 'index.html';
+        if (user) {
+            window.location.href = '/index.html';
         }
     });
 
